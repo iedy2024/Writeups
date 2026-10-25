@@ -5,7 +5,8 @@ Submit the flag with the dog's name as: deadface{dog's name}
 ---
 
 We are presented with this picture:
-![Post-it note with the ciphertext](../attachments/postit_cipher.png)
+
+![Post-it note with the ciphertext|287](../attachments/postit_cipher.png)
 
 Going by the name of the challenge, “Hail Caesar”, the text presented in the photo `Zl qbt'f anzr vf Srgpu` is most probably encoded with Caesar’s Cipher. We can get a hint of this by looking at the text’s structure. The length and form of the words are very English-like, and one of the words even has a `'`. Spaces are also present. Taking all of this into account, we are looking for an algorithm that keeps the text’s original structure but switches the letters around.
 

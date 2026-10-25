@@ -12,6 +12,7 @@ For starters we can get to the terminal. For this we use the Linux USB from the 
 ![Mounting the scanner's internal storage](../attachments/2026-10-19_07-30.png)
 
 From there we move to `/mnt/opt/scanworks`. This is where the configs for the scanner actually are as suggested by the README. Inside we have:
+
 ![Contents of /mnt/opt/scanworks](../attachments/2026-10-19_07-31.png)
 
 By looking at config.yaml we find that calibration is the directory holding the files used by the scanner to determine any abnormalities in a brain scan as well as a hardcoded salt at the top `EM-2019`. In it we have calib.json, calib.json.sig, verify.py and a README. The README explains that the calibration is done by calin.json, calib.json.sig is a hash of calib.json meant to protect the integrity of the calibration and verify.py is a script running on every scan that checks if the sha256 hash of the calib.json matches the signiture from calib.json.sig.
