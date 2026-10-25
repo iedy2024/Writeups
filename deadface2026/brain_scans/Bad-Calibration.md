@@ -1,3 +1,5 @@
+# Bad Calibration
+
 The CS-9000 refuses to run a scan unless its calibration file passes an integrity check — so the vendor clearly thought about this. Clearly.
 
 Find how the calibration file is validated, then prove the check is worthless. We need you to determine if the scanner misreads a patient with a genuine anomaly as perfectly healthy (which would potentially cause patient harm if the anomaly goes undetected).
