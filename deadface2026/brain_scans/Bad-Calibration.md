@@ -9,17 +9,17 @@ Submit the flag as deadface{flag-text}
 
 For starters we can get to the terminal. For this we use the Linux USB from the bottom left menu on the scanner's USB port. Inside the CL we can find the config files, by following the instruction of the README.txt from the home directory. So we run `sudo mount /dev/sda2 /mnt` to mount the scanners internal storage to /mnt.
 
-![[2026-10-19_07-30.png]]
+![Mounting the scanner's internal storage](../attachments/2026-10-19_07-30.png)
 
 From there we move to `/mnt/opt/scanworks`. This is where the configs for the scanner actually are as suggested by the README. Inside we have:
-![[2026-10-19_07-31.png]]
+![Contents of /mnt/opt/scanworks](../attachments/2026-10-19_07-31.png)
 
 By looking at config.yaml we find that calibration is the directory holding the files used by the scanner to determine any abnormalities in a brain scan as well as a hardcoded salt at the top `EM-2019`. In it we have calib.json, calib.json.sig, verify.py and a README. The README explains that the calibration is done by calin.json, calib.json.sig is a hash of calib.json meant to protect the integrity of the calibration and verify.py is a script running on every scan that checks if the sha256 hash of the calib.json matches the signiture from calib.json.sig.
 
 We can check the integrity with 2 system commands. `scanctl verify` runs the python script, `scanctl scan` runs the scan on the patience loaded in memory after rechecking the integrity.
 
 What is important to note is that we learn from the README how the hash is created. It runs sha256sum on the bytes of calib.json + the salt found in config.yaml appended at the end.
-![[2026-10-19_07-32.png]]
+![Calibration README explaining the hash](../attachments/2026-10-19_07-32.png)
 
 Inside the calib.json we have 2 important fields.
 - `anomaly_detection` with represent the % at which something is detected as an anomaly in the scan 
